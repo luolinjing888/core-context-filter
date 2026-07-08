@@ -1,0 +1,6 @@
+interface:
+  display_name: "Core Context Filter"
+  short_description: "Distill raw sources into core context"
+  default_prompt: "Use $core-context-filter to turn this raw source into a concise core-context handoff packet with references."
+policy:
+  allow_implicit_invocation: true
