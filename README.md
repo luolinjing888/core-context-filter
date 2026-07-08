@@ -47,6 +47,27 @@ cp -R core-context-filter ~/.codex/skills/
 
 Restart Codex or open a new thread if your environment requires skill reload.
 
+## Automatic Invocation
+
+This skill is designed for implicit invocation.
+
+The included `agents/openai.yaml` sets:
+
+```yaml
+policy:
+  allow_implicit_invocation: true
+```
+
+In supported Codex environments, once the skill is installed, Codex can choose it automatically when it receives long or noisy raw sources such as articles, X/Twitter threads, webpages, PDFs, transcripts, reports, pasted notes, or scraped text.
+
+This is not a hard runtime hook. Codex still decides whether the skill matches the current task. For the strongest behavior, add this instruction to your global or project agent instructions:
+
+```text
+When receiving long or noisy raw information such as articles, X/Twitter threads, webpages, PDFs, reports, transcripts, pasted notes, or scraped text, use $core-context-filter before executing the task. Convert the source into a concise core-context handoff packet with references, then continue from that filtered context.
+```
+
+Manual invocation remains available when you want to force the skill for a specific input.
+
 ## Invoke
 
 ```text
